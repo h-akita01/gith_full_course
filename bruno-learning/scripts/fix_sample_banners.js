@@ -39,3 +39,31 @@ R('exercises/mambu-corporate-onboarding/environments/Mambu-Sandbox.yml',
 R('exercises/mambu-corporate-onboarding/environments/Mambu-Sandbox.yml',
   'description: 取引チャネルの ID（GET /organization/transactionChannels で確認）',
   'description: 取引チャネルの ID（03 Get Transaction Channels の Script で自動保存）');
+// すべての箇所を置き換える（置き換え済みなら SKIP）
+const RA = (f, from, to) => {
+  const p = path.join(ROOT, f), t = fs.readFileSync(p, 'utf8');
+  const n = t.split(from).length - 1;
+  if (n === 0 && t.includes(to)) { console.log('SKIP', f, '|', to.slice(0, 60)); return; }
+  if (n === 0) throw new Error(`${f}: 0 件 → ${from.slice(0, 60)}`);
+  fs.writeFileSync(p, t.split(from).join(to)); console.log('OK x' + n, f, '|', to.slice(0, 80));
+};
+// 3-11：import-practice.postman_collection.json のフォルダ名は「Import Practice」（04_GET ではない）
+R('scripts/build_part2.js',
+  "'import-practice の 04_GET → 02 Get Post by ID を開いて Send → 200 OK を確認'",
+  "'import-practice の Import Practice → 02 Get Post by ID を開いて Send → 200 OK を確認'");
+// exercises/README.md：配布版 bruno-hands-on の表に 09_TIPS の 03・09_Chain・10_LocalMock を追加
+R('exercises/README.md',
+  '| `bruno-hands-on/` | 演習用コレクション（YAML / OpenCollection 形式） | 第3〜9章 |',
+  '| `bruno-hands-on/` | 演習用コレクション（YAML / OpenCollection 形式） | 第3〜10章 |');
+R('exercises/README.md',
+  '| 09_TIPS | 01 Create Post from Data File / 02 Create Post with Random Values | CLI でデータファイルを指定して実行（下記）／送るたびに値が変わる |',
+  '| 09_TIPS | 01 Create Post from Data File / 02 Create Post with Random Values / 03 Create Post with Fixed Text and 3 Digits | CLI でデータファイルを指定して実行（下記）／送るたびに値が変わる／「テスト投稿-」＋100〜999 の 3 桁 |\n' +
+  '| 09_Chain | 01 Save by Script / 02 Save by Vars Tab / 03 Use in URL Path / 04 Use in Query / 05 Use in Header / 06 Use in Body | 01 → 06 の順に実行：userId 2・userName Ervin Howell・postTitle nesciunt quas odio を保存して、URL・Query・ヘッダー・Body で使う |\n' +
+  '| 10_LocalMock | 01 Create Post / 02 Get Created Post / 03 Delete Created Post / 04 Get After Delete（環境 Local-Mock、json-server の起動が必要） | 201 / 200 / 200 / 404 |');
+// 3-5〜3-8・3-14：samples のファイル名には番号（01・02）が付いている
+RA('scripts/build_part2.js',
+  '03_Setup\\\\01 Get Post 1.yml を',
+  '03_Setup\\\\01 Get Post 1.yml（演習で作る Get Post 1 の完成形）を');
+R('scripts/build_part2.js',
+  '03_Setup\\\\02 Get Posts with baseUrl.yml を',
+  '03_Setup\\\\02 Get Posts with baseUrl.yml（演習で作る Get Posts with baseUrl の完成形）を');

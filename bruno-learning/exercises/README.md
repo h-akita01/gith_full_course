@@ -10,7 +10,7 @@
 
 | フォルダ・ファイル | 用途 | 使う章 |
 |---|---|---|
-| `bruno-hands-on/` | 演習用コレクション（YAML / OpenCollection 形式） | 第3〜9章 |
+| `bruno-hands-on/` | 演習用コレクション（YAML / OpenCollection 形式） | 第3〜10章 |
 | `bruno-hands-on/environments/JSONPlaceholder.yml` | 環境：baseUrl = https://jsonplaceholder.typicode.com | 第3章〜 |
 | `bruno-hands-on/environments/Local-Mock.yml` | 環境：baseUrl = http://localhost:3000（発展課題用） | 第10章 |
 | `import-practice/import-practice.postman_collection.json` | Import Collection の練習用（Postman 形式） | 第3章 |
@@ -33,7 +33,9 @@
 | 07_PUT | **配布物には含めない**。第7章（7-4〜7-6）で受講者が自分で作る：01 Put Post Full / 02 Put Post Title Only（PUT）/ 03 Patch Post Title Only（PATCH）。完成形は `samples\07_PUT` | 200 / 200（title と id だけ）/ 200（他の項目が残る） |
 | 08_DELETE | **配布物には含めない**。第8章（8-4〜8-6）で受講者が自分で作る：01 Delete Post（DELETE、Body なし）/ 02 Check After Delete（GET）。完成形は `samples\08_DELETE` | 200 `{}` / 200（残っている） |
 | 09_Features | 01 Assert Example / 02 Test Script Example / 03 Save First Post Id / 04 Use Saved Id | アサーション 3 件・テスト 2 件が成功。03 → 04 の順で実行すると 04 は /posts/11 に送られる |
-| 09_TIPS | 01 Create Post from Data File / 02 Create Post with Random Values | CLI でデータファイルを指定して実行（下記）／送るたびに値が変わる |
+| 09_TIPS | 01 Create Post from Data File / 02 Create Post with Random Values / 03 Create Post with Fixed Text and 3 Digits | CLI でデータファイルを指定して実行（下記）／送るたびに値が変わる／「テスト投稿-」＋100〜999 の 3 桁 |
+| 09_Chain | 01 Save by Script / 02 Save by Vars Tab / 03 Use in URL Path / 04 Use in Query / 05 Use in Header / 06 Use in Body | 01 → 06 の順に実行：userId 2・userName Ervin Howell・postTitle nesciunt quas odio を保存して、URL・Query・ヘッダー・Body で使う |
+| 10_LocalMock | 01 Create Post / 02 Get Created Post / 03 Delete Created Post / 04 Get After Delete（環境 Local-Mock、json-server の起動が必要） | 201 / 200 / 200 / 404 |
 
 ## 4. CLI での実行（第9章）
 

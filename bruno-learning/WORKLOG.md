@@ -252,3 +252,34 @@ OUTLINE.md、REVIEW.md、WORKLOG.md、README.md、.gitignore、research/ENVIRONM
   - mambu_steps.js 121 行：「第9章 9-G」は存在しない節番号（第9章は 9-A〜9-E）
   - answers\bruno-hands-on-answers\Ex06_PATCH に Q2 Check Todo 1 がない（samples にはある）
   - 10_LocalMock の 01・03 にアサーションがない（配布版も同じ。スライドの表は結果の説明だけなので変えていない）
+
+## 2026-10-13 【作業予定】samples とスライドの不整合を残さず揃える（前回「直していないもの」の対応）
+- ユーザー指示：「ダメじゃん、整合性合わせてよ」（前回、スライドの手順側の不整合を報告だけで残したことへの指摘）
+- 予定（スライドと samples・配布物・answers が同じ内容になるよう揃える）
+  1. 9-9：手順の入力（アサーション 1 行）を、samples・配布版・9-8 の表・9-10「Passed: 3」・9-15 の CLI 出力と同じ 3 行に揃える
+  2. 第9章 値の受け渡しの一覧表：09_Chain\01・03 の参照先を正しいスライドに直す（なければ帯・手順を追加）
+  3. 3-11：import-practice のフォルダ名（JSON では「Import Practice」）とスライドの表記を揃える（Bruno で取り込んだときの表示名を確認）
+  4. mambu_steps.js の「第9章 9-G」を実在する節に直す
+  5. answers\bruno-hands-on-answers\Ex06_PATCH に Q2 Check Todo 1 を追加
+  6. 10_LocalMock の 01・03 に、スライドの表（201・200）どおりのアサーションを追加（samples と配布版の両方）
+  7. スライドのコードと .yml のコードの細かい差（9-T4 のセミコロン、コメント行、09_Features\03 の URL）を揃える
+  8. 3-6〜3-8・3-14：samples のファイル名（01 Get Post 1 など）とスライドのリクエスト名の違いを帯で説明
+  9. 直したスクリプトから part02・part04・part05 を再生成し、PNG で目視確認 → 教材フォルダへ反映 → 結果を追記
+- 作業場所：worktree samples-check（ブランチ worktree-samples-check）。教材フォルダの該当ファイルが変わっていないことを確かめてから反映
+- 対象外：第5章（POST）の作成手順（別 worktree post-steps-ch5 で作業済み・未反映のため触らない）。part02 は教材フォルダにある現在の build_part2.js から作り直す
+- 書き込むファイル（予定）：scripts/build_part2.js・build_part4.js・ch9_steps.js・mambu_steps.js・fix_sample_banners.js、exercises/samples・bruno-hands-on の該当 .yml、answers/bruno-hands-on-answers/Ex06_PATCH、slides/part02・part04・part05 と preview、WORKLOG.md（追記のみ）
+
+## 2026-10-13 【結果】samples とスライドの不整合を残さず揃える
+- 9-9：手順を「09_Features → 01 Assert Example の Assert タブに配布済みの 3 行（res.status・res.body.id・res.body.title）を確認して Send」に変更（タイトルも「確認する」に）。画像・9-8 の表・9-10「Passed: 3」・samples・配布版と一致。自分で入力する練習は 9-B（My Request、Passed: 1）のまま
+- 第9章 値の受け渡し：一覧表の「スライド」列を 保存方法1・2（09_Chain\01・02）、送り先1〜4（09_Chain\03〜06）に変更。手順スライドを 2 枚追加（【保存方法1】Script で保存＝01、【送り先1】URL のパス＝03）し、送り先の順番をファイル順（URL → Query → ヘッダー → Body）に並べ替え
+- 第9章の 09_Chain・09_TIPS\03 の画面（assets/screenshots/ch9c の 8 枚）は、確認用コレクション chain-check（01〜08）を撮ったものだったため、配布版 bruno-hands-on（04_GET〜10_LocalMock の状態）で撮り直した（c01_save_script・v02_vars_filled・c03_url・c04_query・c05_header・c06_body・r01_script・r02_sent）。Bruno v4.2.1 を専用プロファイル（job 58cb6d16 の tmp、ポート 9338、CDP で 1920×1032）で起動して Send は JSONPlaceholder に実送信。スライドの説明文は「2026-10-13 撮影」、固定＋3桁の値は 881 → 301 に更新。ch9_zoom.js に c01_save_script・c03_url の切り出しを追加。Documents\bruno は変化なし、撮影用 Bruno は終了
+- 受け渡し 手順 1/3・固定＋3桁 1/2：画面に写っている URL（?userId=2）とコメント行（// …）の説明を手順に追加。9-T4 の手順文の bru.setVar にセミコロンを追加
+- 3-11：「import-practice の 04_GET →」を「import-practice の Import Practice →」に（現在の JSON のフォルダ名。10/9 の画像は旧版の JSON を取り込んだもの。スライドで使う切り出しにはサイドバーは写っていない）
+- 3-5〜3-8・3-14 の帯：samples のファイル名に付いた番号の説明「（演習で作る Get Post 1 の完成形）」などを追加
+- mambu_steps.js：「第9章 9-G」（存在しない）→「第4章 4-9」（Query Parameter の表と URL の連動を説明しているスライド）
+- answers\bruno-hands-on-answers\Ex06_PATCH に Q2 Check Todo 1.yml を追加（samples と同じ内容、seq 2）
+- 10_LocalMock の 01・03 に res.status eq 201・eq 200 を追加（samples と配布版 bruno-hands-on の両方）。json-server（worktree の local-mock）を起動して 4 件・4 アサーションすべて成功を確認。db.json は元に戻し、json-server は停止
+- exercises/README.md：bruno-hands-on の対象を第3〜10章に、表に 09_TIPS の 03・09_Chain・10_LocalMock を追加
+- build_part2.js と exercises/README.md の修正は scripts/fix_sample_banners.js にまとめた（第5章の作業 post-steps-ch5 を反映して上書きされた場合は、`node scripts/fix_sample_banners.js` を実行して part02 を再生成する）
+- 再生成：part02_ch03-05.pptx（69 枚、教材フォルダの現在の build_part2.js から。第5章の作業は含まない）、part04_ch09.pptx（59 → 61 枚）、part05_ch10.pptx。PowerPoint COM で PNG に書き出し、9-9・一覧表・保存方法1・送り先1・送り先4・固定＋3桁 1/2・2/2・3-11 を目視確認。part02 の文字の縮小（fit）は変更前のスクリプトと同じ
+- CLI：samples 全体 54 件中 52 件成功（失敗は 09_TIPS\01 のデータファイルなし、10_LocalMock\02 の json-server なし。どちらも条件を整えると成功）

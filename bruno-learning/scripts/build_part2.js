@@ -56,7 +56,7 @@ require('./ch3_endpoint')(p);
 }
 { // 3-5
   const s = L.slide(p, '【演習3-A ①】最初のコレクションを作る');
-  L.sample(p, s, "samples コレクション（exercises\\samples）を Open Collection で開き、03_Setup\\01 Get Post 1.yml を使って先へ進めます");
+  L.sample(p, s, "samples コレクション（exercises\\samples）を Open Collection で開き、03_Setup\\01 Get Post 1.yml（演習で作る Get Post 1 の完成形）を使って先へ進めます");
   L.steps(s, [
     'サイドバー上部の「＋」（Add new collection）→「Create collection」',
     '名前の入力欄が出たら、右端の歯車（Advanced options）をクリック',
@@ -71,7 +71,7 @@ require('./ch3_endpoint')(p);
 }
 { // 3-6
   const s = L.slide(p, '【演習3-A ②】リクエストを作る');
-  L.sample(p, s, "samples の 03_Setup\\01 Get Post 1.yml を開いて Send");
+  L.sample(p, s, "samples の 03_Setup\\01 Get Post 1.yml（演習で作る Get Post 1 の完成形）を開いて Send");
   L.steps(s, [
     'サイドバーの My-First-Collection を右クリック →「New Request」',
     'Type：HTTP（初期値のまま）',
@@ -86,7 +86,7 @@ require('./ch3_endpoint')(p);
 }
 { // 3-7
   const s = L.slide(p, '【演習3-A ③】送信して結果を確認する');
-  L.sample(p, s, "samples の 03_Setup\\01 Get Post 1.yml を開いて Send");
+  L.sample(p, s, "samples の 03_Setup\\01 Get Post 1.yml（演習で作る Get Post 1 の完成形）を開いて Send");
   L.steps(s, ['Get Post 1 を開いた状態で「Send」をクリック（または Ctrl + Enter）', '右側のレスポンスで次を確認する'], { x: 0.6, y: 1.2, w: 12.1, h: 0.9 }, { fontSize: 16 });
   L.image(s, 'crop_ch3_sent_url.png', { x: 0.6, y: 2.1, w: 5.6, h: 0.8 }, null, { align: 'left', valign: 'top' }); { const R = L.image(s, 'crop_ch3_sent_send.png', { x: 6.4, y: 2.15, w: 1.7, h: 0.5 }, null, { align: 'left', valign: 'top' }); L.hl(p, s, R, 1, [275,10,408,78]); }
   { const R = L.image(s, 'crop_ch3_sent_resp.png', { x: 0.6, y: 3.05, w: 7.5, h: 2.3 }, SHOT, { align: 'left', valign: 'top' }); L.hl(p, s, R, 2, [1200,12,1455,52]); L.hl(p, s, R, null, [0,100,1740,375]); }
@@ -143,7 +143,7 @@ require('./ch3_endpoint')(p);
     'サイドバー上部の「＋」→「Import collection」',
     'File タブの「choose file(s)」→ exercises\\import-practice\\import-practice.postman_collection.json を選ぶ',
     'Name を確認し、Location の「Browse」で保存先を選ぶ →「Import」',
-    'import-practice の 04_GET → 02 Get Post by ID を開いて Send → 200 OK を確認',
+    'import-practice の Import Practice → 02 Get Post by ID を開いて Send → 200 OK を確認',
   ], { x: 0.6, y: 1.2, w: 5.4, h: 4.4 }, { fontSize: 14, space: 9 });
   { const R = L.image(s, 'crop_ch3_import_dialog.png', { x: 6.2, y: 1.2, w: 3.3, h: 1.6 }, '①② File タブ', { align: 'left', valign: 'top' }); L.hl(p, s, R, null, [30,125,132,180]); L.hl(p, s, R, 2, [700,365,885,400]); }
   const r = L.image(s, 'crop_ch3_import_settings.png', { x: 9.7, y: 1.2, w: 3.0, h: 1.75 }, '③（ユーザー名はマスク）', { align: 'left', valign: 'top', pxPerCss: 2 }); { const R = r; L.hl(p, s, R, 3, [33,375,128,407]); L.hl(p, s, R, null, [824,476,966,536]); }
@@ -174,7 +174,7 @@ require('./ch3_endpoint')(p);
 }
 { // 3-14
   const s = L.slide(p, '【演習3-D】環境を選んでから送信する');
-  L.sample(p, s, "samples の 03_Setup\\02 Get Posts with baseUrl.yml を開き、環境 JSONPlaceholder を選んで Send");
+  L.sample(p, s, "samples の 03_Setup\\02 Get Posts with baseUrl.yml（演習で作る Get Posts with baseUrl の完成形）を開き、環境 JSONPlaceholder を選んで Send");
   L.steps(s, ['bruno-hands-on を右クリック →「New Request」（3-6 と同じ）。Request Name：Get Posts with baseUrl、URL：{{baseUrl}}/posts →「Create」→ 環境を選ばずに Send'], { x: 0.6, y: 1.1, w: 12.1, h: 0.55 }, { fontSize: 14 });
   { const R = L.image(s, 'crop_ch3_noenv_url.png', { x: 0.6, y: 1.65, w: 5.6, h: 0.55 }, null, { align: 'left', valign: 'top' }); L.hl(p, s, R, 1, [95,20,240,62]); }
   { const R = L.image(s, 'crop_ch3_noenv_resp.png', { x: 6.4, y: 1.65, w: 6.3, h: 0.75 }, null, { align: 'left', valign: 'top' }); L.hl(p, s, R, null, [0,95,470,140]); }
