@@ -1,0 +1,7 @@
+info:
+  name: 10_LocalMock
+  type: folder
+  seq: 11
+
+request:
+  auth: inherit

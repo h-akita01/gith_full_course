@@ -1,0 +1,22 @@
+name: Mambu-Sandbox
+variables:
+  - name: baseUrl
+    value: https://YOUR_TENANT.sandbox.mambu.com/api
+    description: YOUR_TENANT を組織のテナント名に置き換える
+  - name: branchKey
+    value: SET_BY_ORGANIZATION
+    description: 支店の encodedKey（組織から受け取る／GET /branches で確認）
+  - name: groupTypeKey
+    value: SET_BY_ORGANIZATION
+    description: 法人用のグループの種類の key（組織から受け取る）
+  - name: roleNameKey
+    value: SET_BY_ORGANIZATION
+    description: 役職（代表者など）の key（組織から受け取る）
+  - name: depositProductKey
+    value: SET_BY_ORGANIZATION
+    description: 預金商品の encodedKey（02 Get Deposit Products の Script で自動保存）
+  - name: channelId
+    value: SET_BY_ORGANIZATION
+    description: 取引チャネルの ID（03 Get Transaction Channels の Script で自動保存）
+  - secret: true
+    name: apiKey

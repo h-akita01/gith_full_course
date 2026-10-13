@@ -1,0 +1,40 @@
+info:
+  name: Q1 Put User 1
+  type: http
+  seq: 1
+
+http:
+  method: PUT
+  url: "{{baseUrl}}/users/1"
+  body:
+    type: json
+    data: |-
+      {
+        "name": "Taro",
+        "email": "taro@example.com"
+      }
+  auth: inherit
+
+runtime:
+  assertions:
+    - expression: res.status
+      operator: eq
+      value: "200"
+    - expression: res.body.name
+      operator: eq
+      value: "Taro"
+    - expression: res.body.email
+      operator: eq
+      value: "taro@example.com"
+    - expression: res.body.id
+      operator: eq
+      value: "1"
+    - expression: res.body.username
+      operator: isUndefined
+      value: ""
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
